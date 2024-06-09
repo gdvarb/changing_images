@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <head>
   <style>
-    h1 {
-      text-align: center;
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      margin: 0;
+
+      background-image: url('bg1.jpg');
     }
-    p {
-      text-align: center;
-    }
-    div {
+
+    .container {
+      width: 500px;
       text-align: center;
     }
     input[type="file"] {
@@ -18,16 +23,18 @@
       display: block;
       margin: 10px auto 0;
     }
+    p {
+    }
   </style>
 </head>
 <body>
-  <h1>Upload An Image To Be Edited!</h1>
-  <form action="/action_page.php">
-    <div>
+  <div class="container">
+    <h1>Upload An Image To Be Edited!</h1>
+    <form action="/action_page.php">
       <input type="file" id="myFile" name="filename">
       <input type="submit">
-    </div>
-  </form>
-  <p>My first paragraph.</p>
+    </form>
+    <p>My first paragraph.</p>
+  </div>
 </body>
 </html>
