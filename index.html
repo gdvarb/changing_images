@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-h1{text-align: center;}
-p{text-align: center;}
-    </style>
-  </head>
-  <body>
-
-    <h1><>Upload An Image To Be Edited!</h1>
-<form action ="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-  
-</form>
-    <p>My first paragraph.</p>
-
-  </body>    
-
+<head>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+    div {
+      text-align: center;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 0 auto;
+    }
+    input[type="submit"] {
+      display: block;
+      margin: 10px auto 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload An Image To Be Edited!</h1>
+  <form action="/action_page.php">
+    <div>
+      <input type="file" id="myFile" name="filename">
+      <input type="submit">
+    </div>
+  </form>
+  <p>My first paragraph.</p>
+</body>
 </html>
-
