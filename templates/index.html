@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <head>
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 70vh;
-      margin: 0;
-
-      background-image: url('bg1.jpg');
-    }
-
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin: 0;
+  background-image: url('bg1.jpg');
+}
     .container {
       width: 500px;
       text-align: center;
@@ -19,12 +17,14 @@
       display: block;
       margin: 0 auto;
     }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
     input[type="submit"] {
-      display: block;
-      margin: 10px auto 0;
-    }
-    p {
-    }
+      margin: 0 5px;
+    } 
   </style>
 </head>
 <body>
@@ -32,7 +32,9 @@
     <h1>Upload An Image To Be Edited!</h1>
     <form action="/action_page.php">
       <input type="file" id="myFile" name="filename">
-      <input type="submit">
+      <div class="button-container">
+        <input type="submit" value="Submit">
+      </div>
     </form>
     <p>My first paragraph.</p>
   </div>
