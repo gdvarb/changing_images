@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash, url_for
 import os
 from werkzeug.utils import secure_filename
 
@@ -13,18 +13,22 @@ def allowed_file(filename):
         filename.rsplit ('.',1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
-def idex():
+def upload_file():
     if request.method == 'POST':
+        
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        
         image = request.files['file']
 
         if image.filename == '':
             print("Invalid submission")
             return redirect(request.url)
 
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        image.save(os.path.join(basedir, app.config['uploads'], image.filename))
-            ###PERFORM OTHER OPERATIONS HERE###
-    return render_template('index.html')
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
