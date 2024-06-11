@@ -30,5 +30,15 @@ def upload_file():
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+    '''
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host = 'localhost', port=8080, debug = True)
