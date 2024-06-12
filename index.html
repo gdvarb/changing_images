@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin: 0;
+}
+    .container {
+      width: 500px;
+      text-align: center;
+    }
+    input[type="file"] {
+      display: block;
+      margin: 0 auto;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    input[type="submit"] {
+      margin: 0 5px;
+    } 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Upload An Image To Be Edited!</h1>
+    <form action="/uploads" method="post" enctype="multipart/form-data">
+      <input type="file" id="myFile" name="filename">
+      <div class="button-container">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+    <p>My first paragraph.</p>
+  </div>
+</body>
+</html>
