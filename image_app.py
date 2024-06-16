@@ -11,7 +11,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and \
-        filename.rsplit ('.',1)[1].lower() in ALLOWED_EXTENSIONS
+    filename.rsplit ('.',1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def index():
@@ -24,7 +24,6 @@ def upload_file():
 
         if 'filename' not in request.files:
             return redirect(request.url)
-        
 
         file = request.files['filename']
 
@@ -48,15 +47,13 @@ def workOnImage(filepath, filename):
         for y in range(height):
             current_color = picture.getpixel((x,y))
             picture.putpixel((x,y) ,(255 - current_color[0], 255 - current_color[1], 255 - current_color[2]))
+
     picture.save(filepath)
+
 
 @app.route('/uploads/<path:name>', methods = ['GET'])
 def download_file(name):
     return send_from_directory(app.config['UPLOAD_FOLDER'],name, as_attachment=True )
-
-
-
-
 
 
 if __name__ == '__main__':
