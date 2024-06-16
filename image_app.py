@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, render_template_string
+from PIL import Image
 import os
 from werkzeug.utils import secure_filename
 
@@ -34,11 +35,29 @@ def upload_file():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(filepath)
+            workOnImage(filepath)
             return redirect(url_for('index'))
 
     return render_template('index.html')
+
+def workOnImage(filepath):
+    picture =Image.open(filepath)
+    width, height = picture.size
+
+    for x in range(width):
+        for y in range(height):
+            current_color = picture.getpixel((x,y))
+            print(f'Pixel at ({x},{y}): {current_color}')
+            picture.putpixel((x,y) ,(255 - current_color[0], 255 - current_color[1], 255 - current_color[2]))
+
+           
+    picture.save(filepath)
+
+
+
 
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(host = 'localhost', port=8080, debug = True)
+
